@@ -3,67 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Up Game - RAYY</title>
+    <title>Portofolio RAYY</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Styling tetap sama seperti yang sudah Anda buat sebelumnya */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.light-mode {
+            background-color: #ffffff;
+            color: #000;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #282828;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #ff00ff;
+            text-shadow: 2px 2px 5px rgba(255, 0, 255, 0.5);
+        }
+        .store-info {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .store-info h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ff66ff;
+        }
+        .store-info p {
+            font-size: 14px;
+            color: #bbb;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+        .product-card {
+            background-color: #222;
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(255, 0, 255, 0.3);
+        }
+        .product-image img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background-color: #333;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .product-image img:hover {
+            transform: scale(1.1);
+        }
+        .product-name {
+            font-size: 18px;
+            color: #ff66ff;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .product-price {
+            font-size: 22px;
+            color: #ff00ff;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .product-details {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .order-button {
+            background-color: #ff00ff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(255, 0, 255, 0.3);
+        }
+        .order-button:hover {
+            background-color: #ff33ff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(255, 0, 255, 0.5);
+        }
+        .dark-mode-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #282828;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .dark-mode-btn:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
-<body>
+<body class="dark-mode">
+
+    <button class="dark-mode-btn" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i> <!-- Default icon for dark mode -->
+    </button>
+
     <div class="container">
         <div class="header">
-            <h1>Top Up Game - RAYY</h1>
-            <input type="text" class="search-bar" placeholder="Cari produk..." id="searchBar">
+            <h1>RAYY WSLLY</h1>
         </div>
 
-        <div class="product-grid" id="productGrid">
-            <!-- Produk akan dimasukkan melalui JavaScript -->
+        <div class="store-info">
+            <h2>RAYY DEV</h2>
+            <p>info : </p>
+            <input type="text" class="search-bar" placeholder="Cari Produk di RAYY DEV">
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 1GB">
+                </div>
+                <h3 class="product-name">PANEL 1GB</h3>
+                <p class="product-price">Rp 1.000</p>
+                <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 1GB<br>Disk: 1GB<br>CPU: 40%<br>Server: Public</p>
+                <button class="order-button" onclick="orderProduct('PANEL 1GB', 'Rp 1.000')">Pesan Sekarang</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 2GB">
+                </div>
+                <h3 class="product-name">PANEL 2GB</h3>
+                <p class="product-price">Rp 2.000</p>
+                <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 2GB<br>Disk: 2GB<br>CPU: 100%<br>Server: Public</p>
+                <button class="order-button" onclick="orderProduct('PANEL 2GB', 'Rp 2.000')">Pesan Sekarang</button>
+            </div>
+            <!-- Produk Top Up Game -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends">
+                </div>
+                <h3 class="product-name">Top Up Mobile Legends</h3>
+                <p class="product-price">Rp 50.000</p>
+                <p class="product-details">Top Up Mobile Legends 200 Diamond</p>
+                <button class="order-button" onclick="orderProduct('Top Up Mobile Legends', 'Rp 50.000')">Pesan Sekarang</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire">
+                </div>
+   
+               <h3 class="product-name">Top Up Free Fire</h3>
+                <p class="product-price">Rp 75.000</p>
+                <p class="product-details">Top Up Free Fire 500 Diamond</p>
+                <button class="order-button" onclick="orderProduct('Top Up Free Fire', 'Rp 75.000')">Pesan Sekarang</button>
+            </div>
+            <div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 500 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Mobile Legends 500 Diamond</h3>
+    <p class="product-price">Rp 100.000</p>
+    <p class="product-details">Top Up Mobile Legends 500 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 500 Diamond', 'Rp 100.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 1000 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Mobile Legends 1000 Diamond</h3>
+    <p class="product-price">Rp 200.000</p>
+    <p class="product-details">Top Up Mobile Legends 1000 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 1000 Diamond', 'Rp 200.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 1000 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Free Fire 1000 Diamond</h3>
+    <p class="product-price">Rp 150.000</p>
+    <p class="product-details">Top Up Free Fire 1000 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Free Fire 1000 Diamond', 'Rp 150.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 2000 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Free Fire 2000 Diamond</h3>
+    <p class="product-price">Rp 250.000</p>
+    <p class="product-details">Top Up Free Fire 2000 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Free Fire 2000 Diamond', 'Rp 250.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 5000 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Mobile Legends 5000 Diamond</h3>
+    <p class="product-price">Rp 500.000</p>
+    <p class="product-details">Top Up Mobile Legends 5000 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 5000 Diamond', 'Rp 500.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 5000 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Free Fire 5000 Diamond</h3>
+    <p class="product-price">Rp 500.000</p>
+    <p class="product-details">Top Up Free Fire 5000 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Free Fire 5000 Diamond', 'Rp 500.000')">Pesan Sekarang</button>
+</div>
+    <!-- Produk Top Up Tambahan -->
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 10000 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Free Fire 10000 Diamond</h3>
+    <p class="product-price">Rp 1.000.000</p>
+    <p class="product-details">Top Up Free Fire 10000 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Free Fire 10000 Diamond', 'Rp 1.000.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 10000 Diamond">
+    </div>
+    <h3 class="product-name">Top Up Mobile Legends 10000 Diamond</h3>
+    <p class="product-price">Rp 1.000.000</p>
+    <p class="product-details">Top Up Mobile Legends 10000 Diamond</p>
+    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 10000 Diamond', 'Rp 1.000.000')">Pesan Sekarang</button>
+</div>
+     <!-- Produk Panel Tambahan -->
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 4GB">
+    </div>
+    <h3 class="product-name">PANEL 4GB</h3>
+    <p class="product-price">Rp 4.000</p>
+    <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 4GB<br>Disk: 4GB<br>CPU: 150%<br>Server: Private</p>
+    <button class="order-button" onclick="orderProduct('PANEL 4GB', 'Rp 4.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 8GB">
+    </div>
+    <h3 class="product-name">PANEL 8GB</h3>
+    <p class="product-price">Rp 8.000</p>
+    <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 8GB<br>Disk: 8GB<br>CPU: 200%<br>Server: Private</p>
+    <button class="order-button" onclick="orderProduct('PANEL 8GB', 'Rp 8.000')">Pesan Sekarang</button>
+</div>
+
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 16GB">
+    </div>
+    <h3 class="product-name">PANEL 16GB</h3>
+    <p class="product-price">Rp 16.000</p>
+    <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 16GB<br>Disk: 16GB<br>CPU: 250%<br>Server: Private</p>
+    <button class="order-button" onclick="orderProduct('PANEL 16GB', 'Rp 16.000')">Pesan Sekarang</button>
+</div>
         </div>
     </div>
 
     <script>
-        // Dummy Data Produk
-        const products = [
-            {name: 'Top Up Mobile Legends 200 Diamond', price: 'Rp 50.000', image: 'https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg', details: 'Top Up Mobile Legends 200 Diamond'},
-            {name: 'Top Up Free Fire 500 Diamond', price: 'Rp 75.000', image: 'https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg', details: 'Top Up Free Fire 500 Diamond'},
-            {name: 'Top Up Free Fire 1000 Diamond', price: 'Rp 150.000', image: 'https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg', details: 'Top Up Free Fire 1000 Diamond'},
-            {name: 'Top Up Mobile Legends 500 Diamond', price: 'Rp 100.000', image: 'https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg', details: 'Top Up Mobile Legends 500 Diamond'},
-            {name: 'Top Up Mobile Legends 1000 Diamond', price: 'Rp 200.000', image: 'https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg', details: 'Top Up Mobile Legends 1000 Diamond'},
-        ];
-
-        // Menampilkan Produk ke Grid
-        function displayProducts(products) {
-            const productGrid = document.getElementById('productGrid');
-            productGrid.innerHTML = '';
-            products.forEach(product => {
-                const productCard = `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">${product.name}</h3>
-                            <p class="product-price">${product.price}</p>
-                            <p class="product-details">${product.details}</p>
-                            <form method="POST" action="payment.php">
-                                <input type="hidden" name="productName" value="${product.name}">
-                                <input type="hidden" name="productPrice" value="${product.price}">
-                                <label for="paymentMethod">Metode Pembayaran:</label>
-                                <select name="paymentMethod" required>
-                                    <option value="COD">Cash on Delivery (COD)</option>
-                                    <option value="E-Wallet">E-Wallet</option>
-                                </select>
-                                <button type="submit" class="order-button">Pesan Sekarang</button>
-                            </form>
-                        </div>
-                    </div>
-                `;
-                productGrid.innerHTML += productCard;
-            });
+        // Fungsi untuk memesan produk
+        function orderProduct(productName, productPrice) {
+            const phoneNumber = '6285718517738'; // Ganti dengan nomor WhatsApp Anda
+            const message = `Saya%20ingin%20memesan%20${productName}%20seharga%20${productPrice}`;
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
         }
 
-        // Tampilkan semua produk saat pertama kali load
-        displayProducts(products);
+        // Fungsi pencarian produk
+        document.querySelector('.search-bar').addEventListener('input', function(event) {
+            const query = event.target.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(function(card) {
+                const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                if (productName.includes(query)) {
+                    card.style.display = ''; // Tampilkan produk yang cocok
+                } else {
+                    card.style.display = ''; // Produk yang tidak cocok tetap ditampilkan
+                }
+            });
+        });
+
+        // Fungsi untuk toggle mode terang dan gelap
+        function toggleDarkMode() {
+            const body = document.body;
+            const button = document.querySelector('.dark-mode-btn');
+            body.classList.toggle('light-mode');
+
+            if (body.classList.contains('light-mode')) {
+                button.innerHTML = '<i class="fas fa-sun"></i>';  // Ikon matahari untuk mode terang
+            } else {
+                button.innerHTML = '<i class="fas fa-moon"></i>';  // Ikon bulan untuk mode gelap
+            }
+        }
     </script>
+
 </body>
-</html>
+</html> 
+                
+                
