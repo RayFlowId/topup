@@ -1,367 +1,422 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio RAYY</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #121212;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        body.light-mode {
-            background-color: #ffffff;
-            color: #000;
-        }
-        .container {
-            width: 100%;
-            max-width: 900px;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #282828;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .header h1 {
-            font-size: 28px;
-            color: #ff00ff;
-            text-shadow: 2px 2px 5px rgba(255, 0, 255, 0.5);
-        }
-        .store-info {
-            background-color: #333;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .store-info h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #ff66ff;
-        }
-        .store-info p {
-            font-size: 14px;
-            color: #bbb;
-        }
-        .search-bar {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        @media (min-width: 768px) {
-            .product-grid {
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-            }
-        }
-        .product-card {
-            background-color: #222;
-            border: 2px solid #ff00ff;
-            border-radius: 10px;
-            overflow: hidden;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(255, 0, 255, 0.3);
-        }
-        .product-image img {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background-color: #333;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-        .product-image img:hover {
-            transform: scale(1.1);
-        }
-        .product-name {
-            font-size: 18px;
-            color: #ff66ff;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .product-price {
-            font-size: 22px;
-            color: #ff00ff;
-            font-weight: bold;
-            margin: 5px 0;
-        }
-        .product-details {
-            font-size: 14px;
-            color: #aaa;
-            line-height: 1.6;
-            margin: 10px 0;
-        }
-        .order-button {
-            background-color: #ff00ff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 4px 8px rgba(255, 0, 255, 0.3);
-        }
-        .order-button:hover {
-            background-color: #ff33ff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(255, 0, 255, 0.5);
-        }
-        .dark-mode-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #282828;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-        .dark-mode-btn:hover {
-            transform: scale(1.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAYY DEV Store</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    :root {
+      --bg-dark: #121212;
+      --bg-light: #f5f5f5;
+      --card-dark: #1f1f1f;
+      --card-light: #ffffff;
+      --text-dark: #ffffff;
+      --text-light: #111111;
+      --muted-dark: #bcbcbc;
+      --muted-light: #555555;
+      --accent: #ff00ff;
+      --accent-2: #ff4dff;
+      --shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      padding: 24px;
+    }
+
+    body.light-mode {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .dark-mode-btn {
+      background: #2a2a2a;
+      color: #fff;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: 0 5px 12px var(--shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .dark-mode-btn:hover {
+      transform: scale(1.08);
+    }
+
+    body.light-mode .dark-mode-btn {
+      background: #ffffff;
+      color: #111;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .header {
+      background: #2b2b2b;
+      border-radius: 16px;
+      text-align: center;
+      padding: 22px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 18px var(--shadow);
+    }
+
+    body.light-mode .header {
+      background: #ffffff;
+    }
+
+    .header h1 {
+      color: var(--accent);
+      font-size: clamp(24px, 4vw, 36px);
+      letter-spacing: 1px;
+    }
+
+    .store-info {
+      background: #2d2d2d;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 18px var(--shadow);
+    }
+
+    body.light-mode .store-info {
+      background: #ffffff;
+    }
+
+    .store-info h2 {
+      margin-bottom: 8px;
+      color: #ff75ff;
+      font-size: 26px;
+    }
+
+    .store-info p {
+      color: var(--muted-dark);
+      margin-bottom: 12px;
+    }
+
+    body.light-mode .store-info p {
+      color: var(--muted-light);
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #555;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #1b1b1b;
+      color: white;
+      outline: none;
+    }
+
+    body.light-mode .search-bar {
+      background: #f1f1f1;
+      color: #111;
+      border-color: #d3d3d3;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .product-card {
+      background: var(--card-dark);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 10px 18px rgba(255, 0, 255, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 26px rgba(255, 0, 255, 0.2);
+    }
+
+    body.light-mode .product-card {
+      background: var(--card-light);
+    }
+
+    .product-image {
+      margin-bottom: 12px;
+    }
+
+    .product-image img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff7dff;
+      margin-bottom: 8px;
+      min-height: 46px;
+    }
+
+    .product-price {
+      font-size: 24px;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-details {
+      font-size: 14px;
+      color: #b8b8b8;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      min-height: 95px;
+    }
+
+    body.light-mode .product-details {
+      color: #535353;
+    }
+
+    .order-button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 18px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      width: 100%;
+    }
+
+    .order-button:hover {
+      background: var(--accent-2);
+      transform: scale(1.02);
+    }
+
+    .empty-message {
+      display: none;
+      text-align: center;
+      padding: 30px 10px;
+      color: #aaa;
+      font-size: 18px;
+    }
+
+    body.light-mode .empty-message {
+      color: #666;
+    }
+  </style>
 </head>
-<body class="dark-mode">
+<body>
+  <div class="container">
+    <div class="topbar">
+      <button class="dark-mode-btn" onclick="toggleDarkMode()" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
 
-    <button class="dark-mode-btn" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i> <!-- Default icon for dark mode -->
-    </button>
+    <header class="header">
+      <h1>RAYY WSLLY</h1>
+    </header>
 
-    <div class="container">
-        <div class="header">
-            <h1>RAYY WSLLY</h1>
-        </div>
+    <section class="store-info">
+      <h2>RAYY DEV</h2>
+      <p>Info: Jual panel, top up game, dan produk digital lainnya.</p>
+      <input
+        type="text"
+        class="search-bar"
+        placeholder="Cari Produk di RAYY DEV"
+        aria-label="Cari produk"
+      />
+    </section>
 
-        <div class="store-info">
-            <h2>RAYY DEV</h2>
-            <p>info : </p>
-            <input type="text" class="search-bar" placeholder="Cari Produk di RAYY DEV">
-        </div>
+    <div id="productGrid" class="product-grid"></div>
+    <div id="emptyMessage" class="empty-message">Produk tidak ditemukan.</div>
+  </div>
 
-        <div class="product-grid">
+  <script>
+    const products = [
+      {
+        name: "PANEL 1GB",
+        price: "Rp 1.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg",
+        details: "Masa Aktif: 30 Hari<br>RAM: 1GB<br>Disk: 1GB<br>CPU: 40%<br>Server: Public"
+      },
+      {
+        name: "PANEL 2GB",
+        price: "Rp 2.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg",
+        details: "Masa Aktif: 30 Hari<br>RAM: 2GB<br>Disk: 2GB<br>CPU: 100%<br>Server: Public"
+      },
+      {
+        name: "Top Up Mobile Legends",
+        price: "Rp 50.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg",
+        details: "Top Up Mobile Legends 200 Diamond"
+      },
+      {
+        name: "Top Up Free Fire",
+        price: "Rp 75.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg",
+        details: "Top Up Free Fire 500 Diamond"
+      },
+      {
+        name: "Top Up Mobile Legends 500 Diamond",
+        price: "Rp 100.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg",
+        details: "Top Up Mobile Legends 500 Diamond"
+      },
+      {
+        name: "Top Up Mobile Legends 1000 Diamond",
+        price: "Rp 200.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg",
+        details: "Top Up Mobile Legends 1000 Diamond"
+      },
+      {
+        name: "Top Up Free Fire 1000 Diamond",
+        price: "Rp 150.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg",
+        details: "Top Up Free Fire 1000 Diamond"
+      },
+      {
+        name: "Top Up Free Fire 2000 Diamond",
+        price: "Rp 250.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg",
+        details: "Top Up Free Fire 2000 Diamond"
+      },
+      {
+        name: "Top Up Mobile Legends 5000 Diamond",
+        price: "Rp 500.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg",
+        details: "Top Up Mobile Legends 5000 Diamond"
+      },
+      {
+        name: "Top Up Free Fire 5000 Diamond",
+        price: "Rp 500.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg",
+        details: "Top Up Free Fire 5000 Diamond"
+      },
+      {
+        name: "Top Up Free Fire 10000 Diamond",
+        price: "Rp 1.000.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg",
+        details: "Top Up Free Fire 10000 Diamond"
+      },
+      {
+        name: "Top Up Mobile Legends 10000 Diamond",
+        price: "Rp 1.000.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg",
+        details: "Top Up Mobile Legends 10000 Diamond"
+      },
+      {
+        name: "PANEL 4GB",
+        price: "Rp 4.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg",
+        details: "Masa Aktif: 30 Hari<br>RAM: 4GB<br>Disk: 4GB<br>CPU: 150%<br>Server: Private"
+      },
+      {
+        name: "PANEL 8GB",
+        price: "Rp 8.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg",
+        details: "Masa Aktif: 30 Hari<br>RAM: 8GB<br>Disk: 8GB<br>CPU: 200%<br>Server: Private"
+      },
+      {
+        name: "PANEL 16GB",
+        price: "Rp 16.000",
+        image: "https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg",
+        details: "Masa Aktif: 30 Hari<br>RAM: 16GB<br>Disk: 16GB<br>CPU: 250%<br>Server: Private"
+      }
+    ];
+
+    const grid = document.getElementById("productGrid");
+    const emptyMessage = document.getElementById("emptyMessage");
+    const searchInput = document.querySelector(".search-bar");
+
+    function renderProducts(filterText = "") {
+      const query = filterText.toLowerCase().trim();
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(query)
+      );
+
+      grid.innerHTML = filtered
+        .map(
+          (product) => `
             <div class="product-card">
-                <div class="product-image">
-                    <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 1GB">
-                </div>
-                <h3 class="product-name">PANEL 1GB</h3>
-                <p class="product-price">Rp 1.000</p>
-                <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 1GB<br>Disk: 1GB<br>CPU: 40%<br>Server: Public</p>
-                <button class="order-button" onclick="orderProduct('PANEL 1GB', 'Rp 1.000')">Pesan Sekarang</button>
+              <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" />
+              </div>
+              <h3 class="product-name">${product.name}</h3>
+              <p class="product-price">${product.price}</p>
+              <p class="product-details">${product.details}</p>
+              <button class="order-button" onclick="orderProduct('${product.name.replace(/'/g, "\\'")}', '${product.price.replace(/'/g, "\\'")}')">
+                Pesan Sekarang
+              </button>
             </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 2GB">
-                </div>
-                <h3 class="product-name">PANEL 2GB</h3>
-                <p class="product-price">Rp 2.000</p>
-                <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 2GB<br>Disk: 2GB<br>CPU: 100%<br>Server: Public</p>
-                <button class="order-button" onclick="orderProduct('PANEL 2GB', 'Rp 2.000')">Pesan Sekarang</button>
-            </div>
-            <!-- Produk Top Up Game -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends">
-                </div>
-                <h3 class="product-name">Top Up Mobile Legends</h3>
-                <p class="product-price">Rp 50.000</p>
-                <p class="product-details">Top Up Mobile Legends 200 Diamond</p>
-                <button class="order-button" onclick="orderProduct('Top Up Mobile Legends', 'Rp 50.000')">Pesan Sekarang</button>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire">
-                </div>
-   
-               <h3 class="product-name">Top Up Free Fire</h3>
-                <p class="product-price">Rp 75.000</p>
-                <p class="product-details">Top Up Free Fire 500 Diamond</p>
-                <button class="order-button" onclick="orderProduct('Top Up Free Fire', 'Rp 75.000')">Pesan Sekarang</button>
-            </div>
-            <div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 500 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Mobile Legends 500 Diamond</h3>
-    <p class="product-price">Rp 100.000</p>
-    <p class="product-details">Top Up Mobile Legends 500 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 500 Diamond', 'Rp 100.000')">Pesan Sekarang</button>
-</div>
+          `
+        )
+        .join("");
 
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 1000 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Mobile Legends 1000 Diamond</h3>
-    <p class="product-price">Rp 200.000</p>
-    <p class="product-details">Top Up Mobile Legends 1000 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 1000 Diamond', 'Rp 200.000')">Pesan Sekarang</button>
-</div>
+      emptyMessage.style.display = filtered.length === 0 ? "block" : "none";
+    }
 
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 1000 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Free Fire 1000 Diamond</h3>
-    <p class="product-price">Rp 150.000</p>
-    <p class="product-details">Top Up Free Fire 1000 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Free Fire 1000 Diamond', 'Rp 150.000')">Pesan Sekarang</button>
-</div>
+    function orderProduct(productName, productPrice) {
+      const phoneNumber = "6285718517738";
+      const message = encodeURIComponent(`Saya ingin memesan ${productName} seharga ${productPrice}`);
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+      window.open(whatsappURL, "_blank");
+    }
 
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 2000 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Free Fire 2000 Diamond</h3>
-    <p class="product-price">Rp 250.000</p>
-    <p class="product-details">Top Up Free Fire 2000 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Free Fire 2000 Diamond', 'Rp 250.000')">Pesan Sekarang</button>
-</div>
+    searchInput.addEventListener("input", (event) => {
+      renderProducts(event.target.value);
+    });
 
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 5000 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Mobile Legends 5000 Diamond</h3>
-    <p class="product-price">Rp 500.000</p>
-    <p class="product-details">Top Up Mobile Legends 5000 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 5000 Diamond', 'Rp 500.000')">Pesan Sekarang</button>
-</div>
+    function toggleDarkMode() {
+      document.body.classList.toggle("light-mode");
+      const icon = document.querySelector(".dark-mode-btn i");
+      icon.classList.toggle("fa-moon");
+      icon.classList.toggle("fa-sun");
+    }
 
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 5000 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Free Fire 5000 Diamond</h3>
-    <p class="product-price">Rp 500.000</p>
-    <p class="product-details">Top Up Free Fire 5000 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Free Fire 5000 Diamond', 'Rp 500.000')">Pesan Sekarang</button>
-</div>
-    <!-- Produk Top Up Tambahan -->
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-ldpgc4hdz6.jpg" alt="Top Up Free Fire 10000 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Free Fire 10000 Diamond</h3>
-    <p class="product-price">Rp 1.000.000</p>
-    <p class="product-details">Top Up Free Fire 10000 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Free Fire 10000 Diamond', 'Rp 1.000.000')">Pesan Sekarang</button>
-</div>
-
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-j9rqczvbdp.jpg" alt="Top Up Mobile Legends 10000 Diamond">
-    </div>
-    <h3 class="product-name">Top Up Mobile Legends 10000 Diamond</h3>
-    <p class="product-price">Rp 1.000.000</p>
-    <p class="product-details">Top Up Mobile Legends 10000 Diamond</p>
-    <button class="order-button" onclick="orderProduct('Top Up Mobile Legends 10000 Diamond', 'Rp 1.000.000')">Pesan Sekarang</button>
-</div>
-     <!-- Produk Panel Tambahan -->
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 4GB">
-    </div>
-    <h3 class="product-name">PANEL 4GB</h3>
-    <p class="product-price">Rp 4.000</p>
-    <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 4GB<br>Disk: 4GB<br>CPU: 150%<br>Server: Private</p>
-    <button class="order-button" onclick="orderProduct('PANEL 4GB', 'Rp 4.000')">Pesan Sekarang</button>
-</div>
-
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 8GB">
-    </div>
-    <h3 class="product-name">PANEL 8GB</h3>
-    <p class="product-price">Rp 8.000</p>
-    <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 8GB<br>Disk: 8GB<br>CPU: 200%<br>Server: Private</p>
-    <button class="order-button" onclick="orderProduct('PANEL 8GB', 'Rp 8.000')">Pesan Sekarang</button>
-</div>
-
-<div class="product-card">
-    <div class="product-image">
-        <img src="https://rammpntxxx-up.hf.space/file/image-8960uq4ebl.jpg" alt="Panel 16GB">
-    </div>
-    <h3 class="product-name">PANEL 16GB</h3>
-    <p class="product-price">Rp 16.000</p>
-    <p class="product-details">Masa Aktif: 30 Hari<br>RAM: 16GB<br>Disk: 16GB<br>CPU: 250%<br>Server: Private</p>
-    <button class="order-button" onclick="orderProduct('PANEL 16GB', 'Rp 16.000')">Pesan Sekarang</button>
-</div>
-        </div>
-    </div>
-
-    <script>
-        // Fungsi untuk memesan produk
-        function orderProduct(productName, productPrice) {
-            const phoneNumber = '6285718517738'; // Ganti dengan nomor WhatsApp Anda
-            const message = `Saya%20ingin%20memesan%20${productName}%20seharga%20${productPrice}`;
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-            window.open(whatsappURL, '_blank');
-        }
-
-        // Fungsi pencarian produk
-        document.querySelector('.search-bar').addEventListener('input', function(event) {
-            const query = event.target.value.toLowerCase();
-            const productCards = document.querySelectorAll('.product-card');
-            productCards.forEach(function(card) {
-                const productName = card.querySelector('.product-name').textContent.toLowerCase();
-                if (productName.includes(query)) {
-                    card.style.display = ''; // Tampilkan produk yang cocok
-                } else {
-                    card.style.display = ''; // Produk yang tidak cocok tetap ditampilkan
-                }
-            });
-        });
-
-        // Fungsi untuk toggle mode terang dan gelap
-        function toggleDarkMode() {
-            const body = document.body;
-            const button = document.querySelector('.dark-mode-btn');
-            body.classList.toggle('light-mode');
-
-            if (body.classList.contains('light-mode')) {
-                button.innerHTML = '<i class="fas fa-sun"></i>';  // Ikon matahari untuk mode terang
-            } else {
-                button.innerHTML = '<i class="fas fa-moon"></i>';  // Ikon bulan untuk mode gelap
-            }
-        }
-    </script>
-
+    renderProducts();
+  </script>
 </body>
-</html> 
-                
-                
+</html>
